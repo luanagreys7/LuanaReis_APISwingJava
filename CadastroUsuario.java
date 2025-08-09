@@ -16,7 +16,7 @@ public class CadastroUsuario {
         frame.setLocationRelativeTo(null); // centraliza a janela
 
         // Layout do frame
-        frame.setLayout(new GridLayout(4, 2)); // 4 linhas (nome, email, idade, botão), 2 colunas (label, campo de texto)
+        frame.setLayout(new GridLayout(6, 2)); // 6 linhas (nome, email, idade, botões rádio para selecionar sexo, botões cadastrar e limpar), 2 colunas (label, campo de texto)
 
         // Labels (nome, email e idade) e campos de texto
         JLabel nomeLabel = new JLabel("Nome:");
@@ -59,23 +59,36 @@ public class CadastroUsuario {
                 String idade = idadeField.getText();
 
                 // Verifica qual botão de sexo está selecionado utilizando operador ternário
-                String sexo = masculinoButton.isSelected() ? "Masculino"  femininoButton:.isSelected() ? "Feminino" : "Não informado";
+                String sexo = masculinoButton.isSelected() ? "Masculino" : femininoButton.isSelected() ? "Feminino" : "Não informado";
 
-                // Validação 
+                // Validação de campos vazios
                 if (nome.isEmpty() || email.isEmpty() || idade.isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Usuário cadastrado:\nNome: " + nome + "\nE-mail: " + email + "\nIdade: " + idade);
+                    return; // Sai do método se algum campo estiver vazio
                 }
+
+                // Validação de e-mail 
+                if (!email.contains("@") || !email.contains(".")) {
+                    JOptionPane.showMessageDialog(frame, "Digite um e-mail válido!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    return; // Sai do método se o e-mail for inválido
+                }
+
+                // JOptionPane para mostrar os dados digitados
+                JOptionPane.showMessageDialog(frame,
+                        "Usuário cadastrado:\nNome: " + nome +
+                        "\nE-mail: " + email +
+                        "\nIdade: " + idade +
+                        "\nSexo: " + sexo);
             }
         });
 
+        // Evento do botão limpar (desafio)
         limparButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                nomeField.setText("");
+                nomeField.setText(""); // Limpa o campo de nome ao substituir o texto por string vazia
                 emailField.setText("");
                 idadeField.setText("");
-                sexoGroup.clearSelection();
+                sexoGroup.clearSelection(); // Limpa a seleção dos botões de rádio
             }
         });
 
@@ -91,10 +104,12 @@ public class CadastroUsuario {
         frame.add(sexoLabel);
         frame.add(sexoPanel);
 
-        frame.add(new JLabel("")); // Espaço vazio para alinhar o botão
-        
-        // Adiciona o botão ao frame
+        // Adiciona o botão cadastrar ao frame
         frame.add(cadastrarButton);
+
+        // Adiciona o botão limpar (desafio) ao frame
+        frame.add(limparButton);        
+       
 
         // Exibe a janela
         frame.setVisible(true);
