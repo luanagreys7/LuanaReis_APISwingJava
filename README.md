@@ -19,9 +19,9 @@ O programa permite inserir **Nome**, **E-mail**, **Idade** e **Sexo** (Masculino
   - Apaga todos os campos e desmarca o sexo.
 
 ## 🎯 Desafios Implementados
-✅ **Validação de e-mail (conter '@' e '.')**
-✅ **Seleção de sexo com JRadioButton**
-✅ **Botão "Limpar" para resetar o formulário**
+✅ **Validação de e-mail (conter '@' e '.')** 
+✅ **Seleção de sexo com JRadioButton** 
+✅ **Botão "Limpar" para resetar o formulário** 
 
 ## Tecnologias Utilizadas
 - **Java**
