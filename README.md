@@ -18,7 +18,7 @@ O programa permite inserir **Nome**, **E-mail**, **Idade** e **Sexo** (Masculino
 - **Botão "Limpar"**:
   - Apaga todos os campos e desmarca o sexo.
 
-## 🎯 Desafios Extras Implementados
+## 🎯 Desafios Implementados
 ✅ **Validação de e-mail**  
 ✅ **Seleção de sexo com JRadioButton**  
 ✅ **Botão "Limpar" para resetar o formulário** 
